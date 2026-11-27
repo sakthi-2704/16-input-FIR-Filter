@@ -34,7 +34,7 @@ module fir_filter #(
 
     `include "fir_coeffs.vh"     // COEFFS (packed, tap k at [k*CW +: CW])
 
-    // ---- transposed-form partial-sum registers -------------------------------
+    // ---- transposed-form partial-sum registers
     reg signed [AW-1:0] s [0:N-1];
     integer k;
     always @(posedge clk) begin
@@ -47,7 +47,7 @@ module fir_filter #(
         end
     end
 
-    // ---- scale back to Q1.15 and saturate, then register ---------------------
+    // ---- scale back to Q1.15 and saturate, then register
     localparam signed [AW-1:0] MAX_V =  (1 <<< (DW-1)) - 1;
     localparam signed [AW-1:0] MIN_V = -(1 <<< (DW-1));
 
